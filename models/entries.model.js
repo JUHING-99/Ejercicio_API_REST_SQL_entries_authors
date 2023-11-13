@@ -50,6 +50,21 @@ const createEntry = async (entry) => {
     return result
 }
 // DELETE
+const deleteEntry = async (infoentry) => {
+    const {title} = infoentry;
+    let client, result;
+    try {
+        client = await pool.connect(); // Espera a abrir conexion
+        const data = await client.query(queries.deleteEntry,[title])
+        result = data.rowCount
+    } catch (err) {
+        console.log(err);
+        throw err;
+    } finally {
+        client.release();
+    }
+    return result
+}
 //UPDATE
 const updateEntry = async (infoentry) => {
     const {newtitle, title} = infoentry;
@@ -74,7 +89,7 @@ const entries = {
     getEntriesByEmail,
     getAllEntries,
     createEntry,
-    //deleteEntry
+    deleteEntry,
     updateEntry
 }
 module.exports = entries;

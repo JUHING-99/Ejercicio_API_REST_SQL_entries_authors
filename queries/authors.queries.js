@@ -9,7 +9,10 @@ const queries = {
     updateAuthor: `
     UPDATE authors
     SET image = $1
-    WHERE email = $2;`
+    WHERE email = $2;`,
+    deleteEntry: `
+    DELETE FROM authors
+    WHERE email =$1;`
 }
 module.exports = queries;
 

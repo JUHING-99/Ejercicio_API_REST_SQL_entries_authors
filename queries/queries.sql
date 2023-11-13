@@ -40,3 +40,14 @@ WHERE email = $2;
 UPDATE entries
 SET title = $1
 WHERE title =$2;
+
+
+
+--delete entry by title
+DELETE FROM entries
+WHERE title =$1;
+
+
+--delete autor by email
+DELETE FROM authors
+WHERE email =$1;

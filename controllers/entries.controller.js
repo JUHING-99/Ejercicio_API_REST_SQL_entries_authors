@@ -50,9 +50,18 @@ const updateEntry = async (req, res) => {
     });
 }
 
+const deleteEntry = async (req, res) => {
+    const deleteEntry = req.body; // {title}
+    const response = await entry.deleteEntry(deleteEntry);//esto accede a entries.models y llama a esa funcion allí
+    res.status(201).json({
+        "items_deleted": response,
+        data: deleteEntry
+    });
+}
+
 module.exports = {
     getEntries,
     createEntry,
-    //deleteEntry, --> DELETE
+    deleteEntry, //--> DELETE
     updateEntry //--> PUT
 }
