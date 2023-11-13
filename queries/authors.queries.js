@@ -10,9 +10,11 @@ const queries = {
     UPDATE authors
     SET image = $1
     WHERE email = $2;`,
-    deleteEntry: `
+    deleteAuthor: `
     DELETE FROM authors
-    WHERE email =$1;`
+    WHERE email =$1;`,
+    deleteAllAuthors:
+    `DROP TABLE authors`
 }
 module.exports = queries;
 

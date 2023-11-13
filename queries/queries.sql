@@ -51,3 +51,6 @@ WHERE title =$1;
 --delete autor by email
 DELETE FROM authors
 WHERE email =$1;
+
+--eliminar toda la tabla
+DROP TABLE $1

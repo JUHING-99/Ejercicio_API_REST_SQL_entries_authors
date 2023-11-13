@@ -7,6 +7,7 @@ entriesApiRouter.get('/api/entries', entriesApiController.getEntries);
 entriesApiRouter.post('/api/entries', entriesApiController.createEntry);
 entriesApiRouter.put('/api/entries', entriesApiController.updateEntry);
 entriesApiRouter.delete('/api/entries', entriesApiController.deleteEntry);
+entriesApiRouter.delete('/api/entries/all', entriesApiController.deleteAllEntries);
 
 module.exports = entriesApiRouter;
 

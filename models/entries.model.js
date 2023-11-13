@@ -65,6 +65,24 @@ const deleteEntry = async (infoentry) => {
     }
     return result
 }
+
+//DELETE TABLE
+const deleteAllEntries = async () => {
+    let client, result;
+    try {
+        client = await pool.connect(); // Espera a abrir conexion
+        const data = await client.query(queries.deleteAllEntries)
+        result = data.rowCount
+    } catch (err) {
+        console.log(err);
+        throw err;
+    } finally {
+        client.release();
+    }
+    return result
+}
+
+
 //UPDATE
 const updateEntry = async (infoentry) => {
     const {newtitle, title} = infoentry;
@@ -90,6 +108,7 @@ const entries = {
     getAllEntries,
     createEntry,
     deleteEntry,
+    deleteAllEntries,
     updateEntry
 }
 module.exports = entries;

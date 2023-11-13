@@ -52,7 +52,42 @@ const createAuthor = async (infoautor) => {
     }
     return result
 }
+
+
 // DELETE
+const deleteAuthor = async (infoauthor) => {
+    const {email} = infoauthor;
+    let client, result;
+    try {
+        client = await pool.connect(); // Espera a abrir conexion
+        const data = await client.query(queries.deleteAuthor,[email])
+        result = data.rowCount
+    } catch (err) {
+        console.log(err);
+        throw err;
+    } finally {
+        client.release();
+    }
+    return result
+}
+
+//DELETE TABLE
+const deleteAllAuthors = async () => {
+    let client, result;
+    try {
+        client = await pool.connect(); // Espera a abrir conexion
+        const data = await client.query(queries.deleteAllAuthors)
+        result = data.rowCount
+    } catch (err) {
+        console.log(err);
+        throw err;
+    } finally {
+        client.release();
+    }
+    return result
+}
+
+
 //UPDATE
 const updateAuthor = async (infoautor) => {
     const {image, email} = infoautor;
@@ -76,7 +111,8 @@ const authors = {
     getAuthorsByEmail,
     getAllAuthors,
     createAuthor,
-    //deleteAuthor
+    deleteAuthor,
+    deleteAllAuthors,
     updateAuthor
 }
 module.exports = authors;

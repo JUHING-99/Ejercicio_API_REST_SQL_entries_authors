@@ -50,9 +50,28 @@ const updateAuthor = async (req, res) => {
     });
 }
 
+
+const deleteAuthor = async (req, res) => {
+    const deleteAuthor = req.body; // {email}
+    const response = await autoresModel.deleteAuthor(deleteAuthor);//esto accede a entries.models y llama a esa funcion allí
+    res.status(201).json({
+        "items_deleted": response,
+        data: deleteAuthor
+    });
+}
+
+const deleteAllAuthors = async (req, res) => {
+    const response = await autoresModel.deleteAllAuthors;//esto accede a entries.models y llama a esa funcion allí
+    res.status(201).json({
+        "items_deleted": response,
+    });
+}
+
+
 module.exports = {
     getAuthors,
     createAuthor,
-    //deleteEntry, --> DELETE
+    deleteAuthor, //--> DELETE
+    deleteAllAuthors,
     updateAuthor //--> PUT
 }

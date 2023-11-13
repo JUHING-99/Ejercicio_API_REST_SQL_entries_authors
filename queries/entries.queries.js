@@ -15,7 +15,9 @@ const queries = {
     WHERE title =$2;`,
     deleteEntry:`
     DELETE FROM entries
-    WHERE title =$1;`
+    WHERE title =$1;`,
+    deleteAllEntries:
+    `DROP TABLE entries`
 }
 module.exports = queries;
 
