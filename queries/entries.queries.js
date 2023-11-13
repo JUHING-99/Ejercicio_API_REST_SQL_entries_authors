@@ -10,6 +10,9 @@ const queries = {
     createEntry: `INSERT INTO entries(title,content,id_author,category) 
     VALUES ($1,$2,
     (SELECT id_author FROM authors WHERE email=$3),$4)`,
+    updateEntry: `UPDATE entries
+    SET title = $1
+    WHERE title =$2;`
 }
 module.exports = queries;
 

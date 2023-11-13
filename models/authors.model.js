@@ -1,5 +1,5 @@
 //const { Pool } = require('pg');
-const queries = require('./queries')
+const queries = require('../queries/authors.queries')
 const pool = require('../config/db_pgsql')//accede al fichero este que es el que accede al .env donde está la info
 
 
@@ -18,6 +18,9 @@ const getAuthorsByEmail = async (email) => {
     }
     return result
 }
+
+
+
 // GET
 const getAllAuthors = async () => {
     let client, result;
@@ -34,12 +37,12 @@ const getAllAuthors = async () => {
     return result
 }
 // CREATE ACABAR
-/*const createAuthor = async (author) => {
-    const {name, email, author_id} = entry;
+const createAuthor = async (infoautor) => {
+    const {name,surname,email,image} = infoautor;
     let client, result;
     try {
         client = await pool.connect(); // Espera a abrir conexion
-        const data = await client.query(queries.createEntry,[title, content, email, category])
+        const data = await client.query(queries.createAuthor,[name, surname, email, image])
         result = data.rowCount
     } catch (err) {
         console.log(err);
@@ -48,16 +51,34 @@ const getAllAuthors = async () => {
         client.release();
     }
     return result
-}*/
+}
 // DELETE
 //UPDATE
-const auhtors = {
+const updateAuthor = async (infoautor) => {
+    const {image, email} = infoautor;
+    let client, result;
+    try {
+        client = await pool.connect(); // Espera a abrir conexion
+        const data = await client.query(queries.updateAuthor,[image, email])
+        result = data.rowCount
+    } catch (err) {
+        console.log(err);
+        throw err;
+    } finally {
+        client.release();
+    }
+    return result
+}
+
+
+
+const authors = {
     getAuthorsByEmail,
     getAllAuthors,
     createAuthor,
-    //deleteEntry
-    //updateEntry
+    //deleteAuthor
+    updateAuthor
 }
-module.exports = auhtors;
+module.exports = authors;
 // Pruebas
 

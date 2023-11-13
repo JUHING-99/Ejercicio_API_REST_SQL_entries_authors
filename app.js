@@ -13,7 +13,7 @@ app.use(morgan(':method :host :status :param[id] - :response-time ms :body'));
 
 //rutas
 const entriesApiRoutes = require('./routes/entriesAPI_routes')
-//const authorsApiRoutes = require('./routes/authorsAPI_routes')
+const authorsApiRoutes = require('./routes/authorsAPI_routes')
 
 
 app.use(express.json()); // Habilito recepción de JSON en servidor
@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
 
   // Rutas
   app.use('/',entriesApiRoutes);
-  //app.use('/',authorsApiRoutes);
+  app.use('/',authorsApiRoutes);
   // opciones: /api/entries te da todo y /api/entries?email="correo" te da solo lo de ese correo
   
 
