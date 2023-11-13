@@ -5,6 +5,7 @@ const entriesApiRouter = express.Router();
 
 entriesApiRouter.get('/api/entries', entriesApiController.getEntries);
 entriesApiRouter.post('/api/entries', entriesApiController.createEntry);
+entriesApiRouter.put('/api/entries', entriesApiController.updateEntry);
 
 module.exports = entriesApiRouter;
 

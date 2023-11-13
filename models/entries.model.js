@@ -69,6 +69,7 @@ const updateEntry = async (infoentry) => {
 
 
 
+
 const entries = {
     getEntriesByEmail,
     getAllEntries,
