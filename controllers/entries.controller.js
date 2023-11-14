@@ -42,9 +42,9 @@ const createEntry = async (req, res) => {
 
 
 const updateEntry = async (req, res) => {
-    const changeEntry = req.body; // {nwetitle, title}
+    const changeEntry = req.body; // {newtitle, newcontent, newcategory, title} //CORREGIR
     const response = await entry.updateEntry(changeEntry);//esto accede a entries.models y llama a esa funcion allí
-    res.status(201).json({
+    res.status(200).json({
         "items_updated": response,
         data: changeEntry
     });
