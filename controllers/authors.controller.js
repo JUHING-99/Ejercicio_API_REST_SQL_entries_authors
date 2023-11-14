@@ -30,7 +30,7 @@ const getAuthors = async (req, res) => {
 //     email:"alejandru@thebridgeschool.es",
 //     category:"sucesos"}
 
-// Crear author 
+// Crear author -> poner un try/catch o un if/else para controlar errores en caso de que nos pasen un body vacío
 const createAuthor = async (req, res) => {
     const newAuthor = req.body; // {name,surname,email,image}
     const response = await autoresModel.createAuthor(newAuthor);//esto accede a authors.models y llama a esa funcion allí
@@ -40,7 +40,7 @@ const createAuthor = async (req, res) => {
     });
 }
 
-
+//PUT
 const updateAuthor = async (req, res) => {
     const changeAuthor = req.body; // {image, email}
     const response = await autoresModel.updateAuthor(changeAuthor);//esto accede a authors.models y llama a esa funcion allí
@@ -50,7 +50,7 @@ const updateAuthor = async (req, res) => {
     });
 }
 
-
+//DELETE
 const deleteAuthor = async (req, res) => {
     const deleteAuthor = req.body; // {email}
     const response = await autoresModel.deleteAuthor(deleteAuthor);//esto accede a entries.models y llama a esa funcion allí

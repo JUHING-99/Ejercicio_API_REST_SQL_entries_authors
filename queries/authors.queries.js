@@ -3,7 +3,7 @@ const queries = {
     SELECT name ||' '|| surname AS fullname, email, image 
     FROM authors
     WHERE email=$1;`,
-    getAllAuthors: `SELECT * FROM authors;`,
+    getAllAuthors: `SELECT * FROM authors;`, //corregir
     createAuthor: `INSERT INTO authors(name,surname,email,image)
 	VALUES ($1,$2,$3,$4);`,
     updateAuthor: `

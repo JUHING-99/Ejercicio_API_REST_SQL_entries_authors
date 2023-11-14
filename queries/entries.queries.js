@@ -6,7 +6,7 @@ const queries = {
     ON e.id_author=a.id_author
     WHERE a.email=$1 
     ORDER BY e.title;`,
-    getAllEntries: `SELECT * FROM entries;`,
+    getAllEntries: `SELECT * FROM entries;`,//corregir
     createEntry: `INSERT INTO entries(title,content,id_author,category) 
     VALUES ($1,$2,
     (SELECT id_author FROM authors WHERE email=$3),$4)`,
